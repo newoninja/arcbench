@@ -1,0 +1,24 @@
+# systemd service for ArcBench Desktop Host (Linux)
+# Install:
+#   sudo cp scripts/arcbench.service /etc/systemd/system/arcbench.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable arcbench
+#   sudo systemctl start arcbench
+#
+# Logs: journalctl -u arcbench -f
+
+[Unit]
+Description=ArcBench Desktop Host — AI Coding Agent
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=%h/Desktop/Potential App/gymclaw/backend
+ExecStart=%h/Desktop/Potential App/gymclaw/.venv/bin/python main.py
+Restart=always
+RestartSec=5
+EnvironmentFile=%h/Desktop/Potential App/gymclaw/.env
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  macOS LaunchAgent for ArcBench Desktop Host.
+  Install:
+    cp scripts/arcbench.plist ~/Library/LaunchAgents/com.arcbench.host.plist
+    launchctl load ~/Library/LaunchAgents/com.arcbench.host.plist
+  Uninstall:
+    launchctl unload ~/Library/LaunchAgents/com.arcbench.host.plist
+    rm ~/Library/LaunchAgents/com.arcbench.host.plist
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.arcbench.host</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>-c</string>
+        <string>cd ~/Desktop/Potential\ App/gymclaw &amp;&amp; source .venv/bin/activate &amp;&amp; cd backend &amp;&amp; python main.py</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/arcbench.stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/arcbench.stderr.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+    </dict>
+</dict>
+</plist>

@@ -1,0 +1,57 @@
+name: arcbench_mobile
+description: >
+  ArcBench — AI coding agent remote control.
+  Send prompts, review diffs, approve changes from your phone.
+  Tailscale-only transport. Dark theme with ArcBlue (#00D4FF).
+publish_to: 'none'
+version: 2.1.0+1
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+  flutter: '>=3.29.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ── State management ──
+  provider: ^6.1.2
+
+  # ── Firebase ──
+  firebase_core: ^3.8.1             # Firebase initialization
+  firebase_auth: ^5.4.1             # Authentication (email/password, Google, etc.)
+  cloud_firestore: ^5.6.1           # Firestore database
+  cloud_functions: ^5.2.1           # Cloud Functions callable
+
+  # ── Networking ──
+  web_socket_channel: ^3.0.1       # WebSocket with automatic ping/pong
+  http: ^1.2.2                      # REST client (kept for non-Firebase calls)
+  connectivity_plus: ^6.1.1         # Detect online/offline for queue drain
+
+  # ── Security & storage ──
+  flutter_secure_storage: ^9.2.3    # Secure local storage
+  shared_preferences: ^2.3.4        # Settings persistence
+  hive: ^2.2.3                      # Offline queue persistence (fast key-value)
+  hive_flutter: ^1.1.0              # Hive init for Flutter
+
+  # ── Voice I/O ──
+  speech_to_text: ^7.0.0            # Mic -> text (60s max, 3s silence pause)
+  flutter_tts: ^4.2.0               # Text -> speech for AI response summaries
+
+  # ── UI ──
+  flutter_markdown: ^0.7.4+3        # Render Claude markdown in chat bubbles
+  google_fonts: ^6.2.1              # JetBrains Mono for terminal output
+
+  # ── Utilities ──
+  intl: ^0.19.0                     # Date/time formatting
+  uuid: ^4.5.1                      # Client-side IDs for offline queue
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
